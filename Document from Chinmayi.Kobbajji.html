@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Charts</title>
+  <meta name="description" content="Area safety charts: time of day, 6-month trend, score breakdown and area comparison.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/charts.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- Shared navigation (bottom bar on phone, top bar on laptop).
+         Change the hrefs if your teammates use different file names. -->
+    <nav class="tabbar" aria-label="Main">
+      <a href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+        <span>Home</span>
+      </a>
+      <a href="navigate.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L3 10.5l7.5 2.5L13 21z"/></svg>
+        <span>Navigate</span>
+      </a>
+      <a href="charts.html" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 20V12"/><path d="M12 20V5"/><path d="M17 20v-6"/></svg>
+        <span>Charts</span>
+      </a>
+      <a href="community.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5a3 3 0 010 6"/><path d="M18 14.3c1.8.8 3 2.6 3 4.7"/></svg>
+        <span>Community</span>
+      </a>
+      <a href="profile.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <header class="page-head">
+      <h1>Charts</h1>
+      <div class="area-select">
+        <label for="areaSelect" class="sr-only">Choose an area</label>
+        <select id="areaSelect" disabled>
+          <option>Loading…</option>
+        </select>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="grid" id="grid" hidden>
+
+        <!-- Morning / Afternoon / Night cards -->
+        <section class="card span-12" aria-labelledby="timeTitle">
+          <div class="card-head">
+            <h2 class="eyebrow" id="timeTitle"></h2>
+            <span class="pill brand" id="nowPill"></span>
+          </div>
+          <div class="time-grid" id="timeCards" role="group" aria-label="Time of day"></div>
+          <p class="time-note" id="timeNote"></p>
+        </section>
+
+        <!-- 6-month trend -->
+        <section class="card span-7" aria-labelledby="trendTitle">
+          <div class="card-head">
+            <h2 class="eyebrow">Trend · last 6 months</h2>
+            <span class="pill" id="trendDelta"></span>
+          </div>
+          <div class="trend-wrap" id="trendWrap"></div>
+        </section>
+
+        <!-- Score bars -->
+        <section class="card span-5" aria-labelledby="barsTitle">
+          <div class="card-head">
+            <h2 class="eyebrow" id="barsTitle">What makes up the score</h2>
+          </div>
+          <div class="bars" id="bars"></div>
+        </section>
+
+        <!-- Compare areas -->
+        <section class="card span-7" aria-labelledby="compareTitle">
+          <div class="card-head">
+            <h2 class="eyebrow" id="compareTitle">Compare areas</h2>
+          </div>
+          <div class="table-scroll">
+            <table class="compare" id="compareTable"></table>
+          </div>
+          <p class="table-note" id="compareNote"></p>
+        </section>
+
+        <!-- Safest / Least safe -->
+        <div class="stack span-5">
+          <section class="card" aria-labelledby="safestTitle">
+            <div class="card-head">
+              <h2 class="eyebrow" id="safestTitle"></h2>
+            </div>
+            <ol class="rank-list" id="safestList"></ol>
+          </section>
+          <section class="card" aria-labelledby="leastTitle">
+            <div class="card-head">
+              <h2 class="eyebrow" id="leastTitle"></h2>
+            </div>
+            <ol class="rank-list" id="leastList"></ol>
+          </section>
+        </div>
+
+        <div class="legend span-12" aria-label="Score colors">
+          <span class="pill safe">65–100 Safe</span>
+          <span class="pill medium">45–64 Medium</span>
+          <span class="pill risky">0–44 Risky</span>
+        </div>
+      </div>
+
+      <div class="card message" id="message" hidden></div>
+    </main>
+  </div>
+
+  <script src="js/common.js"></script>
+  <script src="js/charts.js"></script>
+</body>
+</html>

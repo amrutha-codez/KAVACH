@@ -1,0 +1,158 @@
+/* ==========================================================
+   theme.css  -  SHARED by every page (Home, Navigate, Charts,
+   Community, Profile). Same colors + same card style everywhere.
+   Do not change these values on one page only.
+   ========================================================== */
+
+:root {
+  /* surfaces */
+  --bg: #f4f3ee;
+  --card: #ffffff;
+  --ink: #1f1b2e;
+  --muted: #6b6778;
+  --line: #edeae4;
+  --track: #e9e5dc;
+
+  /* brand purple */
+  --brand: #3a2466;
+  --brand-2: #5b3a85;
+  --brand-tint: #efecf5;
+
+  /* score colors: 65-100 Safe, 45-64 Medium, 0-44 Risky */
+  --safe: #2ea764;
+  --safe-bg: #dcf2e5;
+  --safe-ink: #1b7a45;
+  --medium: #e4a000;
+  --medium-bg: #fcf1cc;
+  --medium-ink: #8a5d00;
+  --risky: #c0392b;
+  --risky-bg: #fbe0e0;
+  --risky-ink: #a02d2d;
+
+  /* card style */
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 1px 2px rgba(31, 27, 46, 0.04), 0 4px 16px rgba(31, 27, 46, 0.05);
+
+  --font: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+h1, h2, h3, p { margin: 0; }
+
+button, select { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--brand-2);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- card ---------- */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  min-width: 0;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- score pills (same on every page) ---------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.pill.safe   { background: var(--safe-bg);   color: var(--safe-ink); }
+.pill.medium { background: var(--medium-bg); color: var(--medium-ink); }
+.pill.risky  { background: var(--risky-bg);  color: var(--risky-ink); }
+.pill.brand  { background: var(--brand);     color: #fff; }
+.pill.neutral{ background: var(--brand-tint);color: var(--brand); }
+
+/* ---------- bottom tab bar (phone) / top bar (laptop) ---------- */
+.tabbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+}
+.tabbar a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 60px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.tabbar a svg { width: 24px; height: 24px; }
+.tabbar a[aria-current="page"] { color: var(--brand-2); font-weight: 700; }
+
+@media (min-width: 900px) {
+  .tabbar {
+    position: static;
+    justify-content: flex-start;
+    gap: 6px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+  .tabbar a {
+    flex-direction: row;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+  }
+  .tabbar a svg { width: 20px; height: 20px; }
+  .tabbar a[aria-current="page"] { background: var(--brand-tint); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
