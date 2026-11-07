@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+/* ---------- Colours: change them here and every page follows ---------- */
+:root {
+  --purple: #5b3a8c;
+  --purple-dark: #3d2663;
+  --purple-soft: #efe9f7;
+
+  --safe: #2fa866;
+  --safe-bg: #ddf1e4;
+  --safe-text: #1b7a47;
+  --medium: #e5a100;
+  --medium-bg: #fbebc0;
+  --medium-text: #8a5f00;
+  --risky: #d64545;
+  --risky-bg: #f9dada;
+  --risky-text: #a12a2a;
+
+  --bg: #f5f3ee;
+  --white: #ffffff;
+  --text: #1f2430;
+  --text-light: #6f7480;
+  --border: #e3dfd3;
+
+  --nav-h: 64px; /* height of the menu bar */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 16px; /* 16px stops phones from zooming in on inputs */
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--purple);
+  outline-offset: 2px;
+}
+
+a {
+  color: var(--purple);
+}
+
+/* ---------- Page area (space for the menu) ---------- */
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px calc(var(--nav-h) + 28px);
+}
+.page.full {
+  max-width: none;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .page {
+    padding: calc(var(--nav-h) + 24px) 32px 40px;
+  }
+  .page.full {
+    padding: var(--nav-h) 0 0;
+  }
+}
+
+.page-title {
+  margin: 0;
+  font-size: 28px;
+}
+.page-sub {
+  margin: 4px 0 0;
+  color: var(--text-light);
+}
+
+/* ---------- Card: the white rounded box used everywhere ---------- */
+.card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 16px;
+}
+
+.small-title {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+/* ---------- Badge: small coloured label, e.g. "74 · Safe" ---------- */
+.badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.badge.safe {
+  background: var(--safe-bg);
+  color: var(--safe-text);
+}
+.badge.medium {
+  background: var(--medium-bg);
+  color: var(--medium-text);
+}
+.badge.risky {
+  background: var(--risky-bg);
+  color: var(--risky-text);
+}
+.badge.dark {
+  background: var(--purple-dark);
+  color: #fff;
+}
+
+/* ---------- Chip: round button for choices ---------- */
+.chip {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+}
+.chip.active {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  background: var(--purple);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+.btn:hover {
+  background: var(--purple-dark);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.btn.small {
+  width: auto;
+  display: inline-block;
+  padding: 10px 22px;
+  font-size: 15px;
+  border-radius: 999px;
+}
+.btn.outline {
+  background: var(--white);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+}
+.btn.outline:hover {
+  background: var(--purple-soft);
+}
+
+/* ---------- Form fields ---------- */
+.field {
+  display: block;
+  margin-bottom: 14px;
+}
+.field > span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-light);
+}
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  background: var(--white);
+}
+textarea.input {
+  min-height: 110px;
+  resize: vertical;
+}
+
+/* ---------- Messages ---------- */
+.notice {
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 15px;
+  margin: 0 0 14px;
+}
+.notice.error {
+  background: var(--risky-bg);
+  color: var(--risky-text);
+}
+.notice.ok {
+  background: var(--safe-bg);
+  color: var(--safe-text);
+}
+.notice.info {
+  background: var(--purple-soft);
+  color: var(--purple-dark);
+}
+
+.empty {
+  margin: 0;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+/* Rows that look like "Name ........ badge" */
+.list-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 0;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: none;
+  font-size: 18px;
+  text-align: left;
+}
+.list-row:last-child {
+  border-bottom: none;
+}
+button.list-row:hover .row-name {
+  color: var(--purple);
+}
+
+.loading {
+  display: grid;
+  place-items: center;
+  min-height: 50vh;
+  color: var(--text-light);
+}
